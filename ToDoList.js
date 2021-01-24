@@ -37,7 +37,9 @@ AddNewTaskToList = () => {
 
 ClearTaskList = () => {
     if (document.querySelectorAll(".list-item").length > 0) {
-        document.querySelectorAll(".list-item").forEach(item => item.parentNode.removeChild(item))
+        if (confirm("Are you sure about clearing all tasks ?")) {
+            document.querySelectorAll(".list-item").forEach(item => item.parentNode.removeChild(item))
+        }
     }
     else {
         alert("Note: Task list already empty.")
@@ -48,6 +50,7 @@ ClearTaskList = () => {
 NotifyEmptyList = () => {
     let NotifyEmptyList = document.querySelector('.task-input-section #notify-empty-list')
     NotifyEmptyList.innerHTML = "Task list is empty. Enter above to add tasks."
+    NotifyEmptyList.style.color = "grey"
 }
 
 ShowOnlyPendingTasks = () => {
@@ -61,19 +64,21 @@ ShowOnlyPendingTasks = () => {
         CompletedTasks.forEach(item => item.classList.remove("hide"))
         CheckAllTasksCompleted()
     }
-    
+
 }
 
 CheckAllTasksCompleted = () => {
-    let TaskList = document.querySelectorAll(".task-list .list-item.task-completed")
+    let TaskList = document.querySelectorAll(".task-list .list-item")
     let CompletedList = document.querySelectorAll(".task-list .list-item.task-completed.hide")
-    if (TaskList.length > 0 && TaskList.length == CompletedList.length) {
-        let NotifyCompleted = document.querySelector('.task-input-section #notify-empty-list')
-        NotifyCompleted.innerHTML = "All tasks have been completed. Unhide to see all tasks."
-        NotifyCompleted.style.color = "green"
-    }
-    else {
-        let NotifyCompleted = document.querySelector('.task-input-section #notify-empty-list')
-        NotifyCompleted.innerHTML = ""
+    if (TaskList.length > 0) {
+        if (TaskList.length == CompletedList.length) {
+            let NotifyCompleted = document.querySelector('.task-input-section #notify-empty-list')
+            NotifyCompleted.innerHTML = "All tasks have been completed. Unhide to see all tasks."
+            NotifyCompleted.style.color = "green"
+        }
+        else {
+            let NotifyCompleted = document.querySelector('.task-input-section #notify-empty-list')
+            NotifyCompleted.innerHTML = ""
+        }    
     }
 }
