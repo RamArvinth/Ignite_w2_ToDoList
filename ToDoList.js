@@ -39,12 +39,12 @@ ClearTaskList = () => {
     if (document.querySelectorAll(".list-item").length > 0) {
         if (confirm("Are you sure about clearing all tasks ?")) {
             document.querySelectorAll(".list-item").forEach(item => item.parentNode.removeChild(item))
+            NotifyEmptyList()
         }
     }
     else {
         alert("Note: Task list already empty.")
     }
-    NotifyEmptyList()
 }
 
 NotifyEmptyList = () => {
