@@ -6,8 +6,14 @@
     margin-bottom: 20px;
 }
 
+.task-input-section #notify-empty-list {
+    color: gray;
+    font-style: italic;
+}
+
 .task-list .list-item {
     color: #33266E;
+    font-size: 18px;
 }
 
 .task-list .list-item.task-completed {
