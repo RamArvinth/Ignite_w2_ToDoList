@@ -18,6 +18,7 @@ AddNewTaskToList = () => {
             clickEvent.currentTarget.classList.toggle("task-completed")
             document.querySelectorAll(" .list-item.task-completed").forEach(item => item.children[0].checked = true)
             document.querySelectorAll(".list-item:not(.task-completed)").forEach(item => item.children[0].checked = false)
+            ShowOnlyPendingTasks()
         })
 
         document.querySelector(".task-list").appendChild(NewTaskList)
@@ -47,4 +48,32 @@ ClearTaskList = () => {
 NotifyEmptyList = () => {
     let NotifyEmptyList = document.querySelector('.task-input-section #notify-empty-list')
     NotifyEmptyList.innerHTML = "Task list is empty. Enter above to add tasks."
+}
+
+ShowOnlyPendingTasks = () => {
+    if (document.querySelector(".task-input-section .only-pending-task").checked) {
+        let CompletedTasks = document.querySelectorAll(".task-list .list-item.task-completed")
+        CompletedTasks.forEach(item => item.classList.add("hide"))
+        CheckAllTasksCompleted()
+    }
+    else {
+        let CompletedTasks = document.querySelectorAll(".task-list .list-item.task-completed")
+        CompletedTasks.forEach(item => item.classList.remove("hide"))
+        CheckAllTasksCompleted()
+    }
+    
+}
+
+CheckAllTasksCompleted = () => {
+    let TaskList = document.querySelectorAll(".task-list .list-item.task-completed")
+    let CompletedList = document.querySelectorAll(".task-list .list-item.task-completed.hide")
+    if (TaskList.length > 0 && TaskList.length == CompletedList.length) {
+        let NotifyCompleted = document.querySelector('.task-input-section #notify-empty-list')
+        NotifyCompleted.innerHTML = "All tasks have been completed. Unhide to see all tasks."
+        NotifyCompleted.style.color = "green"
+    }
+    else {
+        let NotifyCompleted = document.querySelector('.task-input-section #notify-empty-list')
+        NotifyCompleted.innerHTML = ""
+    }
 }

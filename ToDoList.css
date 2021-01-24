@@ -22,6 +22,10 @@
     text-decoration: line-through;
 }
 
+.task-list .list-item.task-completed.hide {
+    display: none;
+}
+
 .task-list .list-item input {
     margin-right: 2%;
     cursor: pointer;
