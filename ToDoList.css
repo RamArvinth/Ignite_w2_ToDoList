@@ -14,9 +14,15 @@
 .task-list .list-item {
     color: #33266E;
     font-size: 18px;
+    cursor: pointer;
 }
 
 .task-list .list-item.task-completed {
     color: #14A098;
     text-decoration: line-through;
+}
+
+.task-list .list-item input {
+    margin-right: 2%;
+    cursor: pointer;
 }
