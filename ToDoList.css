@@ -1,0 +1,16 @@
+#header {
+    background: #14A098;
+    text-align: center;
+    font-size: 36px;
+    border: 1px solid #0F292F;
+    margin-bottom: 20px;
+}
+
+.task-list .list-item {
+    color: #33266E;
+}
+
+.task-list .list-item.task-completed {
+    color: #14A098;
+    text-decoration: line-through;
+}
